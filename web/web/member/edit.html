@@ -1,0 +1,104 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑人员信息</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+</head>
+<body>
+    <div id="div_container">
+        <div id="pica"><a href="member"><img th:src="@{imgs/back.png}"/></a></div>
+        <div id="div_list">
+            <p class="center f30">编辑人员信息</p>
+            <form th:action=" @{/member.update}" method="post">
+            <table id="tbl_fruit" th:object="${member}">
+                <tr>
+                    <th class="w20">类别:</th>
+                    <td><input type="text" name ="t_type" th:value="*{t_type}" class="textborad"></td>
+               </tr>
+               <tr>
+                   <th class="w20">学工号:</th>
+                   <td><input type="text" name ="t_id" th:value="*{t_id}" class="textborad"></td>
+               </tr>
+               <tr>
+                   <th class="w20">姓名:</th>
+                   <td><input type="text" name ="t_name" th:value="*{t_name}" class="textborad"></td>
+               </tr>
+               <tr th:if="*{t_sex} == '男'">
+                   <th class="w20">性别:</th>
+                   <td >
+                       <input type="radio" name="t_sex" th:value="男" checked>男
+                       <input type="radio" name="t_sex" th:value="女">女
+                   </td>
+               </tr>
+                <tr th:unless="*{t_sex} == '男'">
+                    <th class="w20">性别:</th>
+                    <td>
+                       <input type="radio" name="t_sex" th:value="男">男
+                       <input type="radio" name="t_sex" th:value="女" checked>女
+                   </td>
+               </tr>
+                <tr>
+                    <th class="w20">电话:</th>
+                    <td><input type="text" name ="t_phone" th:value="*{t_phone}" class="textborad"></td>
+                </tr>
+                <tr>
+                    <th class="w20">导师:</th>
+                    <td><input type="text" name ="t_teacherid" th:value="*{t_teacherid}" class="textborad"></td>
+                </tr>
+                <tr th:switch="*{t_level}">
+                    <th class="w20">职称:</th>
+                    <td th:case="教授">
+                        <select name = "t_level" class="textborad">
+                            <option value="讲师" >讲师</option>
+                            <option value="副教授" >副教授</option>
+                            <option value="教授" selected>教授</option>
+                            <option value=null>无</option>
+                        </select>
+                    </td>
+                    <td th:case="副教授" >
+                        <select name = "t_level" class="textborad">
+                            <option value="讲师" >讲师</option>
+                            <option value="副教授" selected>副教授</option>
+                            <option value="教授" >教授</option>
+                            <option value=null>无</option>
+                        </select>
+                    </td>
+                    <td th:case="讲师">
+                        <select name = "t_level" class="textborad">
+                            <option value="学生" selected>讲师</option>
+                            <option value="副教授">副教授</option>
+                            <option value="教授" >教授</option>
+                            <option value=null>无</option>
+                        </select>
+                    </td>
+                    <td th:case="副教授" style="width: 29%;">
+                        <select name = "t_level" class="textborad">
+                            <option value="讲师" >讲师</option>
+                            <option value="副教授" selected>副教授</option>
+                            <option value="教授" >教授</option>
+                            <option value=null>无</option>
+                        </select>
+                    </td>
+                    <td th:case==null>
+                        <select name = "t_level" class="textborad">
+                            <option value="讲师">讲师</option>
+                            <option value="副教授" selected>副教授</option>
+                            <option value="教授" >教授</option>
+                            <option value=null selected>无</option>
+                        </select>
+                    </td>
+
+                </tr>
+               <tr>
+                   <th colspan="2">
+                       <input type="submit" value="修改" class="btn">
+                   </th>
+               </tr>
+               <tr th:if = "${#lists.isEmpty(session.memberlist)}">
+                   <td colspan="4">对不起，信息为空</td>
+           </table>
+            </form>
+       </div>
+   </div>
+</body>
+</html>

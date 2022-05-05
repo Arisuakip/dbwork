@@ -1,0 +1,156 @@
+ a{
+    text-decoration: none;
+}
+body{
+     margin:0;
+     padding:0;
+     background-color:lavender;
+    }
+    div{
+       position:relative;
+       float:left;
+       }
+    #div_container{
+       width:80%;
+       height:100%;
+       margin-left:10%;
+       float:left;
+        background-color:AliceBlue;
+       border-radius:36px;
+    }
+
+    #tbl_fruit{
+        width:60%;
+        line-height:28px;
+        margin-left:20%;
+    }
+    #tbl_fruit,#tbl_fruit tr,#tbl_fruit th,#tbl_fruit td{
+        border:3px solid gray;
+        border-collapse:collapse;
+        text-align:center;
+        font-size:16px;
+        font-family:黑体;
+        color: threeddarkshadow;
+        margin-top:80px;
+    }
+    #tbl_infop,#tbl_infop tr,#tbl_infop th,#tbl_infop td{
+        width:60%;
+        line-height:28px;
+        margin-left:20%;
+        text-align:center;
+        font-size:16px;
+        font-family:仿宋;
+        margin-top:80px;
+        font-weight: bolder;
+    }
+    .w20{
+             width:20%;
+         }
+    .w10{
+        width: 10%;
+    }
+     .w15{
+         width: 15%;
+     }
+    .w25{
+        width: 25%;
+    }
+ #div_list{
+     width:100%;
+     margin-left: 10px;
+ }
+ #add_fruit_div{
+     width:40%;
+     border: 0px solid grey;
+     margin-left:30%;
+     border-collapse:collapse;
+ }
+ #add_fruit_tbl,#add_fruit_tbl tr,#add_fruit_tbl td,#add_fruit_tbl th{
+     border: 1px solid lightgray;
+     text-align: center;
+ }
+#add_fruit_tbl{
+    border-collapse:collapse;
+    margin-top:7px;
+    width: 80%;
+    margin-left: 10%;
+    line-height: 28px;
+    border: 1px solid red;
+}
+#add_div{
+    width: 60%;
+    margin-left: 20%;
+    text-align: right;
+}
+.w30{
+    width: 30%;
+}
+
+.input{
+    padding-left:4px;
+    border: 1px solid lightgray;
+    width: 90%;
+}
+.center{
+    text-align: center;
+}
+.f30{
+    font-size:30px;
+}
+.f20{
+    font-size: 20px;
+}
+.right{
+    text-align: right;
+}
+ #div_table_list{
+     width:100%;
+     border:0px double red;
+     margin-top: 10%;
+ }
+ .std{
+     margin-top: 30px;
+     margin-bottom: 100px;
+ }
+ #page{
+     margin-top: 20px;
+     float: right;
+ }
+ .btn{
+     border:2px solid gray;
+     width: 80px;
+     height: 24px;
+     font-weight: bold;
+     border-radius: 5px;
+ }
+ #pic{
+     border: 0px solid red;
+     float: left;
+     margin-left: 20px;
+ }
+ #titlea{
+     width: 100%;
+     font-size: 30px;
+     text-decoration: red;
+     height: 100px;
+     background: LavenderBlush;
+     border: 1px solid red;
+     border-radius: 36px;
+ }
+ #pica img{
+     width: 40px;
+     height: 40px;
+     margin-left: 25px;
+     margin-top: 25px;
+ }
+ .textborad{
+     width: 170px;
+     border: 2px solid gray;
+     margin-left: 5px;
+ }
+ .selectboard{
+     border: 2px solid gray;
+     width: 170px;
+     margin-left: 5px;
+     height: 22px;
+ }

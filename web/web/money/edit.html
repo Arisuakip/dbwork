@@ -1,0 +1,56 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑账目信息</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+</head>
+<body>
+    <div id="div_container">
+        <div id="pica"><a href="money"><img th:src="@{imgs/back.png}"/></a></div>
+        <div id="div_list">
+            <p class="center f30">编辑账目信息</p>
+            <form th:action=" @{/money.update}" method="post">
+            <table id="tbl_fruit" th:object="${money}">
+                <tr>
+                    <th class="w20">编号:</th>
+                    <td><input type="text" name ="m_id" th:value="*{m_id}" class="textborad"></td>
+               </tr>
+                <tr th:if="*{m_action} == '增加'">
+                    <th class="w20">操作:</th>
+                    <td >
+                        <input type="radio" name="m_action" th:value="增加" checked>增加
+                        <input type="radio" name="m_action" th:value="减少">减少
+                    </td>
+                </tr>
+                <tr th:unless="*{m_action} == '增加'">
+                    <th class="w20">操作:</th>
+                    <td>
+                        <input type="radio" name="m_action" th:value="增加">增加
+                        <input type="radio" name="m_action" th:value="减少" checked>减少
+                    </td>
+                </tr>
+               <tr>
+                   <th class="w20">金额:</th>
+                   <td><input type="text" name ="m_count" th:value="*{m_count}" class="textborad"></td>
+               </tr>
+                <tr>
+                    <th class="w20">登记日期:</th>
+                    <td><input type="text" name ="m_date" th:value="*{m_date}" class="textborad"></td>
+                </tr>
+                <tr>
+                    <th class="w20">审核人学工号:</th>
+                    <td><input type="text" name ="m_userid" th:value="*{m_userid}" class="textborad"></td>
+                </tr>
+               <tr>
+                   <th colspan="2">
+                       <input type="submit" value="修改" class="btn">
+                   </th>
+               </tr>
+               <tr th:if = "${#lists.isEmpty(session.moneylist)}">
+                   <td colspan="6">对不起，信息为空</td>
+           </table>
+            </form>
+       </div>
+   </div>
+</body>
+</html>

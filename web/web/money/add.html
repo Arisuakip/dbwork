@@ -1,0 +1,44 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>添加账目信息</title>
+    <link rel="stylesheet" href="../css/index.css">
+    <script language="JavaScript" src="../js/index.js"></script>
+</head>
+<body>
+    <div id="div_container">
+        <div id="pica"><a href="../money"><img src="../imgs/back.png"/></a></div>
+        <div id="div_list">
+            <p class="center f30">添加账目信息</p>
+            <form action="../money.add" method="post">
+            <table id="tbl_fruit" th:object="${money}">
+               <tr>
+                   <th class="w20">操作:</th>
+                   <td>
+                       <input type="radio" name="m_action" value="增加"><b>增加</b>
+                       <input type="radio" name="m_action" value="减少"><b>减少</b>
+                   </td>
+               </tr>
+               <tr>
+                   <th class="w20">金额:</th>
+                   <td><input type="text" name ="m_count" class="textborad"></td>
+               </tr>
+               <tr>
+                   <th class="w20">登记日期:</th>
+                   <td><input type="date" name ="m_date" class="textborad"></td>
+               </tr>
+                <tr>
+                    <th class="w20">审核人学工号:</th>
+                    <td><input type="text" name ="m_userid" class="textborad"></td>
+                </tr>
+               <tr>
+                   <th colspan="2">
+                       <input type="submit" value="添加" class="btn">
+                   </th>
+               </tr>
+           </table>
+            </form>
+       </div>
+   </div>
+</body>
+</html>

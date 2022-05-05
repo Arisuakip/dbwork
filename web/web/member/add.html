@@ -1,0 +1,68 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>添加人员信息</title>
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+    <div id="div_container">
+        <div id="pica"><a href="../member"><img src="../imgs/back.png"/></a></div>
+        <div id="div_list">
+            <p class="center f30">添加人员信息</p>
+            <form action="../member.add" method="post">
+            <table id="tbl_fruit" th:object="${member}">
+                <tr>
+                    <th class="w20">类型:</th>
+                    <th>
+                        <select name = "t_type" class="selectboard" ">
+                            <option value="学生" >学生</option>
+                            <option value="教师" >教师</option>
+                        </select>
+                    </th>
+
+               </tr>
+               <tr>
+                   <th class="w20">学工号:</th>
+                   <td><input type="text" name ="t_id" class="textborad"></td>
+               </tr>
+               <tr>
+                   <th class="w20">姓名:</th>
+                   <td><input type="text" name ="t_name" class="textborad"></td>
+               </tr>
+               <tr>
+                   <th class="w20">性别:</th>
+                   <td>
+                       <input type="radio" name="t_sex" value="男">男
+                       <input type="radio" name="t_sex" value="女">女
+                   </td>
+               </tr>
+                <tr>
+                    <th class="w20">联系方式:</th>
+                    <td><input type="text" name ="t_phone" class="textborad"></td>
+                </tr>
+                <tr>
+                    <th class="w20">导师:</th>
+                    <td><input type="text" name ="t_teacherid" class="textborad"></td>
+                </tr>
+                <tr>
+                    <th class="w20">职称:</th>
+                    <td>
+                        <select name = "t_level" class="selectboard"/>
+                            <option value="讲师" >讲师</option>
+                            <option value="副教授">副教授</option>
+                            <option value="教授" >教授</option>
+                            <option value=null selected>无</option>
+                        </select>
+                    </td>
+                </tr>
+               <tr>
+                   <th colspan="2">
+                       <input type="submit" value="添加" class="btn">
+                   </th>
+               </tr>
+           </table>
+            </form>
+       </div>
+   </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑设备信息</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+</head>
+<body>
+    <div id="div_container">
+        <div id="pica"><a href="equipment"><img th:src="@{imgs/back.png}"/></a></div>
+        <div id="div_list">
+            <p class="center f30">编辑库存信息</p>
+            <form th:action=" @{/equipment.update}" method="post">
+            <table id="tbl_fruit" th:object="${equipment}">
+                <tr>
+                    <th class="w20">编号:</th>
+                    <td><input type="text" name ="e_id" th:value="*{e_id}"  class="textborad"></td>
+               </tr>
+               <tr>
+                   <th class="w20">名称:</th>
+                   <td><input type="text" name ="e_name" th:value="*{e_name}" class="textborad"></td>
+               </tr>
+               <tr>
+                   <th class="w20">数量:</th>
+                   <td><input type="text" name ="e_count" th:value="*{e_count}" class="textborad"></td>
+               </tr>
+                <tr>
+                    <th class="w20">登记日期:</th>
+                    <td><input type="text" name ="e_date" th:value="*{e_date}" class="textborad"></td>
+                </tr>
+               <tr>
+                   <th colspan="2">
+                       <input type="submit" value="修改" class="btn">
+                   </th>
+               </tr>
+               <tr th:if = "${#lists.isEmpty(session.equiplist)}">
+                   <td colspan="4">对不起，信息为空</td>
+           </table>
+            </form>
+       </div>
+   </div>
+</body>
+</html>

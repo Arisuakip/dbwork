@@ -1,0 +1,56 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>人员信息管理</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script language="JavaScript" src="js/index.js"></script>
+</head>
+<body>
+    <div id="div_container">
+            <div id="pica"><img src="imgs/back.png" onclick="backindex()"/></div>
+        <div id="div_list">
+            <p class="center f30 std">人员信息管理</p>
+            <div id="add_div">
+                <form th:action="@{/member}" method="post" style="float:left" >
+                    <input type="hidden" name="oper" value="search">
+                    <b>请输入查询关键字:</b><input type="text" name="keyword" th:value="${session.keyword}" class="textborad"/>
+                    <input type="submit" value="查询" class="btn"/>
+                </form>
+                <a th:href="@{member/add.html}"><b>添加新人员信息</b></a>
+            </div>
+            <table id="tbl_fruit">
+                <tr>
+                    <th class="w10">类别</th>
+                    <th class="w10">学工号</th>
+                    <th class="w10">姓名</th>
+                    <th class="w10">性别</th>
+                    <th class="w10">电话</th>
+                    <th class="w10">导师</th>
+                    <th class="w10">职称</th>
+                    <th class="w10">操作</th>
+                </tr>
+                <tr th:if = "${#lists.isEmpty(session.memberlist)}">
+                    <td colspan="8">对不起，人员信息为空</td>
+                <tr th:unless = "${#lists.isEmpty(session.memberlist)}" th:each="member : ${session.memberlist}">
+                <td><a th:text="${member.t_type}"></a></td>
+                    <td th:text="${member.t_id}"></td>
+                    <td><a th:text="${member.t_name}" th:href="@{/member.edit(t_id = ${member.t_id})}">null</a></td>
+                    <td th:text="${member.t_sex}"></td>
+                    <td th:text="${member.t_phone}"></td>
+                    <td th:text="${member.t_teachername}">null</td>
+                    <td th:text="${member.t_level}">null</td>
+                    <td th:onclick="mdel([[${member.t_id}]])"><b style="color: red">X</b></td>
+            </tr>
+        </table>
+            <div style="width: 60%;margin-left: 20%;" class="center">
+                <div id="page">
+                    <input type="button" value="首  页" class="btn" th:onclick="|mpage(${1})|" th:disabled="${session.pageNo==1}">
+                    <input type="button" value="上一页" class="btn" th:onclick="|mpage(${session.pageNo-1})|" th:disabled="${session.pageNo==1}">
+                    <input type="button" value="下一页" class="btn" th:onclick="|mpage(${session.pageNo+1})|" th:disabled="${session.pageNo==session.pagecount}">
+                    <input type="button" value="尾  页" class="btn" th:onclick="|mpage(${session.pagecount})|" th:disabled="${session.pageNo==session.pagecount}">
+                </div>
+            </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>设备使用记录</title>
+    <link rel="stylesheet" href="css/index.css">
+    <script language="JavaScript" src="js/index.js"></script>
+</head>
+<body>
+
+    <div id="div_container">
+        <div id="pica"><img src="imgs/back.png" onclick="backindex()"/></div>
+        <div id="div_list">
+            <p class="center f30 std">设备使用记录</p>
+            <div id="add_div">
+                <form th:action="@{/record}" method="post" style="float:left" >
+                    <input type="hidden" name="oper" value="search">
+                    <b>请输入查询关键字:</b><input type="text" name="keyword" th:value="${session.keyword}" class="textborad"/>
+                    <input type="submit" value="查询" class="btn"/>
+                </form>
+                <a th:href="@{record/add.html}"><b>添加新使用记录</b></a>
+            </div>
+            <table id="tbl_fruit">
+                <tr>
+                    <th class="w15">编号</th>
+                    <th class="w15">设备名称</th>
+                    <th class="w15">使用人</th>
+                    <th class="w15">使用日期</th>
+                    <th class="w15">备注</th>
+                    <th class="w15">操作</th>
+                </tr>
+                <tr th:if = "${#lists.isEmpty(session.recordlist)}">
+                    <td colspan="6">对不起，使用记录为空</td>
+                <tr th:unless = "${#lists.isEmpty(session.recordlist)}" th:each="record : ${session.recordlist}">
+                <td><a th:text="${record.r_rid}"></a></td>
+                    <td><a th:text="${record.r_ename}" th:href="@{/record.edit(r_rid = ${record.r_rid})}">null</a></td>
+                    <td th:text="${record.r_tname}"></td>
+                    <td th:text="${record.r_date}"></td>
+                    <td th:text="${record.r_remark}"></td>
+                    <td th:onclick="rdel([[${record.r_rid}]])"><b style="color: red">X</b></td>
+            </tr>
+        </table>
+            <div style="width: 60%;margin-left: 20%;" class="center">
+                <div id="page">
+                    <input type="button" value="首  页" class="btn" th:onclick="|rpage(${1})|" th:disabled="${session.pageNo==1}">
+                    <input type="button" value="上一页" class="btn" th:onclick="|rpage(${session.pageNo-1})|" th:disabled="${session.pageNo==1}">
+                    <input type="button" value="下一页" class="btn" th:onclick="|rpage(${session.pageNo+1})|" th:disabled="${session.pageNo==session.pagecount}">
+                    <input type="button" value="尾  页" class="btn" th:onclick="|rpage(${session.pagecount})|" th:disabled="${session.pageNo==session.pagecount}">
+                </div>
+            </div>
+    </div>
+</div>
+</body>
+</html>

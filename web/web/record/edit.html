@@ -1,0 +1,46 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>编辑使用记录</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+</head>
+<body>
+    <div id="div_container">
+        <div id="pica"><a href="record"><img th:src="@{imgs/back.png}"/></a></div>
+        <div id="div_list">
+            <p class="center f30">编辑使用记录</p>
+            <form th:action=" @{/record.update}" method="post">
+            <table id="tbl_fruit" th:object="${record}">
+                <tr>
+                    <th class="w20">编号:</th>
+                    <td><input type="text" name ="r_rid" th:value="*{r_rid}" class="textborad"></td>
+               </tr>
+               <tr>
+                   <th class="w20">设备编号:</th>
+                   <td><input type="text" name ="r_eid" th:value="*{r_eid}" class="textborad"></td>
+               </tr>
+               <tr>
+                   <th class="w20">使用者学工号:</th>
+                   <td><input type="text" name ="r_tid" th:value="*{r_tid}" class="textborad"></td>
+               </tr>
+                <tr>
+                    <th class="w20">日期:</th>
+                    <td><input type="text" name ="r_date" th:value="*{r_date}" class="textborad"></td>
+                </tr>
+                <tr>
+                    <th class="w20">备注:</th>
+                    <td><input type="text" name ="r_remark" th:value="*{r_remark}" class="textborad"></td>
+                </tr>
+               <tr>
+                   <th colspan="2">
+                       <input type="submit" value="修改" class="btn">
+                   </th>
+               </tr>
+               <tr th:if = "${#lists.isEmpty(session.recordlist)}">
+                   <td colspan="5">对不起，信息为空</td>
+           </table>
+            </form>
+       </div>
+   </div>
+</body>
+</html>

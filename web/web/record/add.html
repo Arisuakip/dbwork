@@ -1,0 +1,42 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>添加使用记录</title>
+    <link rel="stylesheet" href="../css/index.css">
+</head>
+<body>
+    <div id="div_container">
+        <div id="pica"><a href="../record"><img src="../imgs/back.png"/></a></div>
+        <div id="div_list">
+            <p class="center f30">添加使用记录信息</p>
+            <form action="../record.add" method="post">
+            <table id="tbl_fruit" th:object="${record}">
+               <tr>
+                   <th class="w20">设备编号:</th>
+                   <td><input type="text" name ="r_eid" class="textborad"></td>
+               </tr>
+               <tr>
+                   <th class="w20">使用者学工号:</th>
+                   <td><input type="text" name ="r_tid" class="textborad"></td>
+               </tr>
+               <tr>
+                   <th class="w20" >日期:</th>
+                   <td>
+                       <input type="date" name="r_date" class="textborad"">
+                   </td>
+               </tr>
+                <tr>
+                    <th class="w20">备注:</th>
+                    <td><input type="text" name ="r_remark" class="textborad"></td>
+                </tr>
+               <tr>
+                   <th colspan="2">
+                       <input type="submit" value="添加" class="btn">
+                   </th>
+               </tr>
+           </table>
+            </form>
+       </div>
+   </div>
+</body>
+</html>
